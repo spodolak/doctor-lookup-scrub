@@ -5,24 +5,21 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import './styles.css';
 
-let showDoctorByName = (response, name) => {
+let showDoctorByName = (response) => {
 	for (var i = 0; i <= response.data.length; i += 1) {
-		let doctorSearch = response.data[i].profile.last_name;
-		if (name === doctorSearch) {
-			$("#result").append(`${response.data[i].profile.first_name} `);
-			$("#result").append(`${response.data[i].profile.last_name}<br>`);
-			$("#result").append(`${response.data[i].practices[0].visit_address.street}<br>`);
-			$("#result").append(`${response.data[i].practices[0].visit_address.city}<br>`);
-			$("#result").append(`${response.data[i].practices[0].visit_address.state}<br>`);
-			$("#result").append(`${response.data[i].practices[0].phones[0].number}<br><br>`);
-		}
+		$("#result").append(`${response.data[i].profile.first_name} `);
+		$("#result").append(`${response.data[i].profile.last_name}<br>`);
+		$("#result").append(`${response.data[i].practices[0].visit_address.street}<br>`);
+		$("#result").append(`${response.data[i].practices[0].visit_address.city}<br>`);
+		$("#result").append(`${response.data[i].practices[0].visit_address.state}<br>`);
+		$("#result").append(`${response.data[i].practices[0].phones[0].number}<br>`);
+		$("#result").append(`${response.data[i].practices[0].website}<br>`);
+		$("#result").append(`${response.data[i].practices[0].accepts_new_patients}<br><br>`);
 	}
 }
 
-let showDoctorBySymptom = (response, symptom) => {
+let showDoctorBySymptom = (response) => {
 	for (var i = 0; i <= response.data.length; i += 1) {
-		console.log(response.data[i].profile);
-		let doctorSearch = response.data[i].profile.last_name;
 		if (symptom === doctorSearch) {
 			$("#result").append(`${response.data[i].profile.first_name} `);
 			$("#result").append(`${response.data[i].profile.last_name}<br>`);
