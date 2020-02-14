@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 let showDoctorByName = (response, name) => {
 	for (var i = 0; i <= response.data.length; i += 1) {
-		console.log(response.data[i].profile);
 		let doctorSearch = response.data[i].profile.last_name;
 		if (name === doctorSearch) {
 			$("#result").append(`${response.data[i].profile.first_name} `);
@@ -20,11 +19,11 @@ let showDoctorByName = (response, name) => {
 	}
 }
 
-let showDoctorBySymptom = (response, searchInput) => {
-	for (var i = 1; i <= response.data.length; i += 1) {
+let showDoctorBySymptom = (response, symptom) => {
+	for (var i = 0; i <= response.data.length; i += 1) {
 		console.log(response.data[i].profile);
 		let doctorSearch = response.data[i].profile.last_name;
-		if (searchInput === doctorSearch) {
+		if (symptom === doctorSearch) {
 			$("#result").append(`${response.data[i].profile.first_name} `);
 			$("#result").append(`${response.data[i].profile.last_name}<br>`);
 			$("#result").append(`${response.data[i].practices[0].visit_address.street}<br>`);
@@ -35,21 +34,26 @@ let showDoctorBySymptom = (response, searchInput) => {
 	}
 }
 
-
 $(document).ready(function () {
+
 	$("form#search-name-input").submit(function (event) {
 		event.preventDefault();
 		let name = $("#inputted-name").val();
-		let symptom $("")
 		(async () => {
 			let doctorLookup = new DoctorLookup();
-			const response = await doctorLookup.getDoctorByName(name);
-			showDoctorByName(response, name);
-		})();
-		(async () => {
-			let doctorLookup = new DoctorLookup();
-			const response = await doctorLookup.getDoctorBySymptom();
-			showDoctorBySymptom(response, searchInput);
+			const responseName = await doctorLookup.getDoctorByName(name);
+			showDoctorByName(responseName, name);
 		})();
 	});
+
+	$("form#search-symptom-input").submit(function (event)	{
+		event.preventDefault();
+		let symptom = $("#inputted-symptom").val();
+		(async () => {
+			let doctorLookup = new DoctorLookup();
+			const responseSymptom = await doctorLookup.getDoctorBySymptom(symptom);
+			showDoctorBySymptom(responseSymptom, symptom);
+		})();
+	});
+
 });
