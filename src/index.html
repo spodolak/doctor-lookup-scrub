@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Doctor Lookup</title>
-	</head>
-	<body>
-		<div class="container">
-			<div class="jumbotron">
-				<h1>Doctor Look up</h1>
-			</div>
-			<form id="search-input">		
-				<button id="find-doctor" class="btn btn-info btn-lg">Find Doctor</button>
-			</form>
-			<div id="result">
-			</div>
+
+<head>
+	<title>Doctor Lookup</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Doctor Look up</h1>
 		</div>
-	</body>
+		<form id="search-name-input">
+			<div class="form-group">
+				<label for="input-last-name">
+					<p>Enter doctor's last name:</p>
+				</label>
+				<input type="text" class="form-control" id="inputted-name">
+			</div>
+			<button id="find-doctor" class="btn btn-info btn-lg">Find Doctor</button>
+		</form>
+		<form id="search-symptom-input">
+			<div class="form-group">
+				<label for="input-symptom">
+					<p>Search doctors by last name:</p>
+				</label>
+				<input type="text" class="form-control" id="inputted-name">
+			</div>
+			<button id="find-doctor" class="btn btn-info btn-lg">Find Doctor</button>
+		</form>
+		<div id="result">
+		</div>
+	</div>
+</body>
 </html>
