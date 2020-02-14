@@ -5,20 +5,13 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import './styles.css';
 
-// let getElements = (result, bikeColorInput) => {
-//     console.log(result.bikes[0].frame_colors);
-//     console.log(result.bikes.length)
-//     for (var i = 1; i <= result.bikes.length; i +=1) {
-//       let bikeSearch = result.bikes[i].frame_colors[0];
-//       console.log(bikeColorInput);
-//       if (bikeColorInput === bikeSearch) {      
-//         console.log(bikeSearch);
-//         $("#result").append(`${result.bikes[i].title}`);
-//         $("#result").append(`<img src="${result.bikes[i].thumb}">`);
-//         $("#result").append(`${result.bikes[i].frame_colors}`);
-//       }
-//     }
-//   }
+let getElements = (response, searchInput) => {
+    for (var i = 1; i <= targetArray.length; i +=1) {
+      let doctorSearch = result.targetArray[i].targetAttribute];
+      if (searchInput === doctorSearch) {      
+      }
+    }
+  }
   
   $(document).ready(function()  {
   
@@ -31,7 +24,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
         console.log(response.data[0].profile);
         $("#result").append(`${response.data[0].profile.first_name}`);
         $("#result").append(`${response.data[0].profile.last_name}`);
-        // getElements(response, bikeColorInput);
+        $("#result").append(`${response.data[0].practices[0].visit_address.street}`);
+        $("#result").append(`${response.data[0].practices[0].visit_address.city}`);
+        $("#result").append(`${response.data[0].practices[0].visit_address.state}`);
+        $("#result").append(`${response.data[0].practices[0].phones[0].number}`);
+        getElements(response, searchInput);
       })();
     });
   });
