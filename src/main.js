@@ -1,4 +1,5 @@
 import { DoctorLookup } from "./doctor-lookup";
+import { formatPhoneNumber } from "./format-phone-number";
 import $ from 'jquery';
 $;
 import 'bootstrap';
@@ -13,15 +14,20 @@ let showDoctorByName = (response) => {
 			$("#result").append(`${response.data[i].profile.first_name} `);
 			$("#result").append(`${response.data[i].profile.last_name}<br>`);
 			$("#result").append(`${response.data[i].practices[0].visit_address.street}<br>`);
-			$("#result").append(`${response.data[i].practices[0].visit_address.city}<br>`);
+			$("#result").append(`${response.data[i].practices[0].visit_address.city}, `);
 			$("#result").append(`${response.data[i].practices[0].visit_address.state}<br>`);
-			$("#result").append(`${response.data[i].practices[0].phones[0].number}<br>`);
+			let formattedNumber = formatPhoneNumber(response.data[i].practices[0].phones[0].number);
+			$("#result").append(`${formattedNumber}<br>`);
 			if (response.data[i].practices[0].website === undefined) {
-				$("#result").append("no website listed<br>");
+				$("#result").append("Website: no website listed<br>");
 			} else {
-				$("#result").append(`${response.data[i].practices[0].website}<br>`);
+				$("#result").append(`Website: ${response.data[i].practices[0].website}<br>`);
 			}
-			$("#result").append(`${response.data[i].practices[0].accepts_new_patients}<br><br>`);
+			if (response.data[i].practices[0].accepts_new_patients === true) {
+				$("#result").append(`Accepting new patients: Yes <br><br>`);
+			} else {
+				$("#result").append(`Accepting new patients: No <br><br>`);
+			}
 		}
 	}
 }
@@ -34,16 +40,20 @@ let showDoctorBySymptom = (response) => {
 			$("#result").append(`${response.data[i].profile.first_name} `);
 			$("#result").append(`${response.data[i].profile.last_name}<br>`);
 			$("#result").append(`${response.data[i].practices[0].visit_address.street}<br>`);
-			$("#result").append(`${response.data[i].practices[0].visit_address.city}<br>`);
+			$("#result").append(`${response.data[i].practices[0].visit_address.city},`);
 			$("#result").append(`${response.data[i].practices[0].visit_address.state}<br>`);
-			$("#result").append(`${response.data[i].practices[0].phones[0].number}<br>`);
+			let formattedNumber = formatPhoneNumber(response.data[i].practices[0].phones[0].number);
+			$("#result").append(`${formattedNumber}<br>`);
 			if (response.data[i].practices[0].website === undefined) {
-				$("#result").append("no website listed<br>");
+				$("#result").append("Website: no website listed<br>");
 			} else {
-				$("#result").append(`${response.data[i].practices[0].website}<br>`);
+				$("#result").append(`Website: ${response.data[i].practices[0].website}<br>`);
 			}
-			$("#result").append(`${response.data[i].practices[0].website}<br>`);
-			$("#result").append(`${response.data[i].practices[0].accepts_new_patients}<br><br>`);
+			if (response.data[i].practices[0].accepts_new_patients === true) {
+				$("#result").append(`Accepting new patients: Yes <br><br>`);
+			} else {
+				$("#result").append(`Accepting new patients: No <br><br>`);
+			}
 		}
 	}
 }
