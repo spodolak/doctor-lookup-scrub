@@ -40,7 +40,7 @@ let showDoctorBySymptom = (response) => {
 			$("#result").append(`${response.data[i].profile.first_name} `);
 			$("#result").append(`${response.data[i].profile.last_name}<br>`);
 			$("#result").append(`${response.data[i].practices[0].visit_address.street}<br>`);
-			$("#result").append(`${response.data[i].practices[0].visit_address.city},`);
+			$("#result").append(`${response.data[i].practices[0].visit_address.city}, `);
 			$("#result").append(`${response.data[i].practices[0].visit_address.state}<br>`);
 			let formattedNumber = formatPhoneNumber(response.data[i].practices[0].phones[0].number);
 			$("#result").append(`${formattedNumber}<br>`);
