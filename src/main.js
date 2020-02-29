@@ -10,7 +10,7 @@ let showDoctorByName = (response) => {
 	if (response.data[0] === undefined) {
 		$("#result").append("I'm sorry, there are no doctors with that name in the Portland area!")
 	} else {
-		for (var i = 0; i <= response.data.length; i += 1) {
+		for (var i = 0; i < response.data.length; i += 1) {
 			$("#result").append(`${response.data[i].profile.first_name} `);
 			$("#result").append(`${response.data[i].profile.last_name}<br>`);
 			$("#result").append(`${response.data[i].practices[0].visit_address.street}<br>`);
@@ -36,7 +36,7 @@ let showDoctorBySymptom = (response) => {
 	if (response.data[0] === undefined) {
 		$("#result").append("I'm sorry, there are no doctors in the area that treat this symptom!")
 	} else {
-		for (var i = 0; i <= response.data.length; i += 1) {
+		for (var i = 0; i < response.data.length; i += 1) {
 			$("#result").append(`${response.data[i].profile.first_name} `);
 			$("#result").append(`${response.data[i].profile.last_name}<br>`);
 			$("#result").append(`${response.data[i].practices[0].visit_address.street}<br>`);
