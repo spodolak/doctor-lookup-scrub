@@ -38,9 +38,6 @@ This web application intakes search information such as symptoms or doctor name 
 * Node
 * BetterDoctor, Inc. (API)
 
-## Link to GitHub Pages
-[Doctor Lookup](https://spodolak.github.io/doctor-lookup/)
-
 ## Support and Contact Details
 
 _For any questions or comments please contact:_ Stephanie Podolak
